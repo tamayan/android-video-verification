@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VideoVerificationApp</string>
+    <string name="thumbnail_label">サムネイル</string>
+    <string name="video_label">動画</string>
 </resources>

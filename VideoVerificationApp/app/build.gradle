@@ -17,11 +17,16 @@ android {
         buildConfigField "String", "API_KEY", "\"${getLocalProperties("API_KEY")}\""
         buildConfigField "String", "VIDEO_ID", "\"${getLocalProperties("VIDEO_ID")}\""
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
