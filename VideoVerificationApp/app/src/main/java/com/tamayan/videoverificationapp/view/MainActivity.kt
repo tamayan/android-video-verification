@@ -1,4 +1,4 @@
-package com.tamayan.videoverificationapp
+package com.tamayan.videoverificationapp.view
 
 import android.os.Bundle
 import com.google.android.youtube.player.YouTubeBaseActivity
@@ -6,6 +6,8 @@ import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubeThumbnailLoader
 import com.google.android.youtube.player.YouTubeThumbnailView
+import com.tamayan.videoverificationapp.BuildConfig
+import com.tamayan.videoverificationapp.R.layout
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -13,7 +15,7 @@ class MainActivity : YouTubeBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(layout.activity_main)
 
         youTubePlayerView
                 .initialize(
