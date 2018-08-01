@@ -16,23 +16,28 @@ class MainActivity : YouTubeBaseActivity() {
         setContentView(R.layout.activity_main)
 
         youTubePlayerView
-                .initialize(BuildConfig.API_KEY, object : YouTubePlayer.OnInitializedListener {
-                    override fun onInitializationSuccess(provider: YouTubePlayer.Provider, player: YouTubePlayer, wasRestored: Boolean) {
-                        player.loadVideo(BuildConfig.VIDEO_ID)
-                    }
+                .initialize(
+                        BuildConfig.API_KEY,
+                        object : YouTubePlayer.OnInitializedListener {
 
-                    override fun onInitializationFailure(provider: YouTubePlayer.Provider, youTubeInitializationResult: YouTubeInitializationResult) {
-                    }
-                })
+                            override fun onInitializationSuccess(provider: YouTubePlayer.Provider, player: YouTubePlayer, wasRestored: Boolean) {
+                                player.loadVideo(BuildConfig.VIDEO_ID)
+                            }
+
+                            override fun onInitializationFailure(provider: YouTubePlayer.Provider, youTubeInitializationResult: YouTubeInitializationResult) {
+                            }
+                        })
 
         thumbnailView
-                .initialize(BuildConfig.API_KEY, object : YouTubeThumbnailView.OnInitializedListener {
-                    override fun onInitializationSuccess(thumbnailView: YouTubeThumbnailView?, loader: YouTubeThumbnailLoader?) {
-                        loader?.setVideo(BuildConfig.VIDEO_ID)
-                    }
+                .initialize(
+                        BuildConfig.API_KEY,
+                        object : YouTubeThumbnailView.OnInitializedListener {
+                            override fun onInitializationSuccess(thumbnailView: YouTubeThumbnailView?, loader: YouTubeThumbnailLoader?) {
+                                loader?.setVideo(BuildConfig.VIDEO_ID)
+                            }
 
-                    override fun onInitializationFailure(p0: YouTubeThumbnailView?, p1: YouTubeInitializationResult?) {
-                    }
-                })
+                            override fun onInitializationFailure(p0: YouTubeThumbnailView?, p1: YouTubeInitializationResult?) {
+                            }
+                        })
     }
 }
