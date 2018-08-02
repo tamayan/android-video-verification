@@ -6,6 +6,6 @@ import retrofit2.http.Query
 
 interface YoutubeApi {
 
-    @GET("videos?part=contentDetails")
+    @GET("videos?part=id,contentDetails")
     fun getVideoDetail(@Query("id") id: String, @Query("key") key: String): Single<ResponseJson>
 }

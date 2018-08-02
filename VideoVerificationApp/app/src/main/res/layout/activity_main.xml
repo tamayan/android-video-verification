@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerInParent="true"
     tools:context=".view.MainActivity">
 
     <RelativeLayout
@@ -18,30 +19,19 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/space_s" />
 
-        <TextView
-            android:id="@+id/thumbnailTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/thumbnailView"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/space_s"
-            android:text="@string/thumbnail_label"
-            android:textSize="20sp" />
-
         <com.google.android.youtube.player.YouTubePlayerView
             android:id="@+id/youTubePlayerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thumbnailTextView"
+            android:layout_below="@+id/thumbnailView"
             android:layout_marginBottom="@dimen/space_s" />
 
         <TextView
-            android:id="@+id/youTubePlayerTextView"
+            android:id="@+id/durationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/youTubePlayerView"
             android:layout_centerHorizontal="true"
-            android:text="@string/video_label"
             android:textSize="20sp" />
 
     </RelativeLayout>
