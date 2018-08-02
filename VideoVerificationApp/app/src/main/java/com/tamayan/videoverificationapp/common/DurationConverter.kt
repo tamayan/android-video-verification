@@ -1,57 +1,39 @@
 package com.tamayan.videoverificationapp.common
 
+import org.threeten.bp.Duration
+
 object DurationConverter {
 
-    fun convert(duration: String): String {
-        var duration = duration.substring(2)
+    /**
+     * PTHMS形式の文字列を渡すと、HH:mm:ssに変換します。
+     */
+    fun convert(time: String): String {
+        val duration = Duration.parse(time)
+        val hour = getHour(duration.toHours().toInt())
+        val minute = getMinute(hour, (duration.toMinutes() % 60L).toInt())
+        val second = getSecond((duration.seconds % 60L).toInt())
 
-        val H: String
-        var M: String
-        var S: String
+        return if (hour.isNotEmpty())
+            "$hour:$minute:$second"
+        else
+            "$minute:$second"
+    }
 
-        val indOfH = duration.indexOf("H")
-        if (indOfH > -1) {
-            H = duration.substring(0, indOfH)
-            duration = duration.substring(indOfH)
-            duration = duration.replace("H", "")
-        }
-        else {
-            H = ""
-        }
+    private fun getHour(hour: Int): String {
+        return if (hour > 0) hour.toString() else ""
+    }
 
-        val indOfM = duration.indexOf("M")
-        if (indOfM > -1) {
-            M = duration.substring(0, indOfM)
-            duration = duration.substring(indOfM)
-            duration = duration.replace("M", "")
-            if (H.isNotEmpty() && M.length == 1) {
-                M = "0$M"
-            }
-        }
-        else {
-            M = if (H.isNotEmpty()) {
-                "00"
-            }
-            else {
-                "0"
-            }
-        }
+    private fun getMinute(hour: String, minute: Int): String {
+        return if (minute > 0)
+            if (hour.isNotEmpty() && minute < 10) "0$minute" else minute.toString()
+        else
+            if (hour.isNotEmpty()) "00" else "0"
+    }
 
-        val indOfS = duration.indexOf("S")
-        if (indOfS > -1) {
-            S = duration.substring(0, indOfS)
-            if (S.length == 1) {
-                S = "0$S"
-            }
-        }
-        else {
-            S = "00"
-        }
-        return if (H.isNotEmpty()) {
-            "$H:$M:$S"
-        }
-        else {
-            "$M:$S"
-        }
+    private fun getSecond(second: Int): String {
+        return if (second > 0)
+            if (second < 10) "0$second" else second.toString()
+        else
+            "00"
     }
 }
